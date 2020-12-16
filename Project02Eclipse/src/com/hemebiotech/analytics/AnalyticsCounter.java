@@ -18,5 +18,7 @@ public class AnalyticsCounter {
 		ListNumberedOrdered ReadyToPrint = new ListNumberedOrdered(ListSymptom.GetSymptoms());
 		System.out.println(ReadyToPrint.listnumberedordered());
 		// List of symptoms ordered and with occurrences
+		
+		ResultsWriter Results = new ResultsWriter();
 	}
 }
