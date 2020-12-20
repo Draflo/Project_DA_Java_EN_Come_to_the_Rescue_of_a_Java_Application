@@ -1,19 +1,28 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-
+/**
+ * This program allows you to retrieve a list of String from a file, order them
+ * alphabetically, counts the number of occurrences, and then deliver the output
+ * in a result file.
+ * 
+ * @author Draflo
+ *
+ */
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
+
 	public static void main(String args[]) throws Exception {
+<<<<<<< HEAD
 		try (// first get input
 		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"))) {
 			String line = reader.readLine();
+=======
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile("symptoms.txt");
+		//Créer une list fixe
+		System.out.println(symptomReader.GetSymptoms());
+		// List of symptoms as it is in the file
+>>>>>>> refs/heads/release/V1_GetSymptom_Count_Order
 
+<<<<<<< HEAD
 			
 			while (line != null) {
 				System.out.println("symptom from file: " + line);
@@ -39,5 +48,14 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
 		writer.close();
+=======
+		ListNumberedOrdered ReadyToPrint = new ListNumberedOrdered(symptomReader.GetSymptoms());
+		//Créer une map fixe
+		System.out.println(ReadyToPrint.listnumberedordered());
+		// List of symptoms ordered and with occurrences
+		
+		ResultsWriter Results = new ResultsWriter(ReadyToPrint);
+		Results.writeToFile();
+>>>>>>> refs/heads/release/V1_GetSymptom_Count_Order
 	}
 }
