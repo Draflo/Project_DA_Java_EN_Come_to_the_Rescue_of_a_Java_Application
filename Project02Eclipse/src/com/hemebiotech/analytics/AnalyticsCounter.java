@@ -11,14 +11,17 @@ package com.hemebiotech.analytics;
 public class AnalyticsCounter {
 
 	public static void main(String args[]) throws Exception {
-		ReadSymptomDataFromFile ListSymptom = new ReadSymptomDataFromFile("symptoms.txt");
-		System.out.println(ListSymptom.GetSymptoms());
+		ISymptomReader symptomReader = new ReadSymptomDataFromFile("symptoms.txt");
+		//Créer une list fixe
+		System.out.println(symptomReader.GetSymptoms());
 		// List of symptoms as it is in the file
 
-		ListNumberedOrdered ReadyToPrint = new ListNumberedOrdered(ListSymptom.GetSymptoms());
+		ListNumberedOrdered ReadyToPrint = new ListNumberedOrdered(symptomReader.GetSymptoms());
+		//Créer une map fixe
 		System.out.println(ReadyToPrint.listnumberedordered());
 		// List of symptoms ordered and with occurrences
 		
-		ResultsWriter Results = new ResultsWriter();
+		ResultsWriter Results = new ResultsWriter(ReadyToPrint);
+		Results.writeToFile();
 	}
 }
