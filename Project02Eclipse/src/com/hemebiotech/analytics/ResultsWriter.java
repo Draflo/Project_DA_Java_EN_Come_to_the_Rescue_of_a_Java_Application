@@ -9,19 +9,16 @@ import java.util.TreeMap;
 
 public class ResultsWriter {
 
-	private ListNumberedOrdered filepath;
+	private Map<String, Long> filepath;
 	
-	public ResultsWriter(ListNumberedOrdered readyToPrint) {
-		this.filepath = readyToPrint;
+	public ResultsWriter(Map<String, Long> symptomcountorder) {
+		this.filepath = symptomcountorder;
 	}
 
 	public void writeToFile() {
 		
 		TreeMap<String, Long> map = new TreeMap<String, Long>();
-		map.put("rash", (long) 5);
-		map.put("vision", (long) 2);
-		map.put("vomit", (long) 1);
-		map.put("cough", (long) 4);
+		map.putAll(filepath);
 		File file = new File("result.out");
 		try {
 
