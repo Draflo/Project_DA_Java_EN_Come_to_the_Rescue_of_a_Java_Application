@@ -17,23 +17,23 @@ public class AnalyticsCounter {
 
 	public static void main(String args[]) throws Exception {
 
-		ISymptomReader symptomReader = new ReadSymptomDataFromFile("symptoms.txt");
+		ISymptomReader symptomreader = new ReadSymptomDataFromFile("symptoms.txt");
 		// List of symptoms as it is in the file
 		List<String> listsymptom = new ArrayList<String>();
-		// Créer une list fixe
-		listsymptom.addAll(symptomReader.GetSymptoms());
+		// Create a permanent list to add what ISymptom reader gets
+		listsymptom.addAll(symptomreader.GetSymptoms());
 		System.out.println(listsymptom);
 
-		ListNumberedOrdered ReadyToPrint = new ListNumberedOrdered(listsymptom);
+		ListNumberedOrdered readytoprint = new ListNumberedOrdered(listsymptom);
 		// List of symptoms ordered and with occurrences
 		Map<String,Long> symptomcountorder = new TreeMap<String,Long>();
-		// Créer une map fixe
-		symptomcountorder.putAll(ReadyToPrint.listnumberedordered());
+		// Create a permanent map to add our map ordered and counted
+		symptomcountorder.putAll(readytoprint.ListCountOrder());
 		System.out.println(symptomcountorder);
 		
 
-		ResultsWriter Results = new ResultsWriter(symptomcountorder);
-		Results.writeToFile();
+		ResultsWriter results = new ResultsWriter(symptomcountorder);
+		results.writeToFile();
 
 	}
 }
