@@ -11,6 +11,11 @@ public class ResultsWriter {
 
 	private Map<String, Long> filepath;
 	
+	/**
+	 * 
+	 * @param filepath a full or partial path to the Map with our symptoms and their occurrences
+	 */
+	
 	public ResultsWriter(Map<String, Long> symptomcountorder) {
 		this.filepath = symptomcountorder;
 	}
