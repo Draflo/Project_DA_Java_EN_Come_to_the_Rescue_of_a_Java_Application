@@ -15,25 +15,35 @@ import java.util.TreeMap;
  */
 public class AnalyticsCounter {
 
+	static Map<String, Long> symptomcountorder = new TreeMap<String, Long>();
+	/**
+	 * Create a permanent map to add our map ordered and counted
+	 */
+	static List<String> listsymptom = new ArrayList<String>();
+
+	/**
+	 * Create a permanent list to add what ISymptom reader gets
+	 */
 	public static void main(String args[]) throws Exception {
 
 		ISymptomReader symptomreader = new ReadSymptomDataFromFile("symptoms.txt");
-		// List of symptoms as it is in the file
-		List<String> listsymptom = new ArrayList<String>();
-		// Create a permanent list to add what ISymptom reader gets
-		listsymptom.addAll(symptomreader.GetSymptoms());
-		System.out.println(listsymptom);
+		/**
+		 * List of symptoms as it is in the file
+		 */
+
+		listsymptom.addAll(symptomreader.getSymptoms());
 
 		ListNumberedOrdered readytoprint = new ListNumberedOrdered(listsymptom);
-		// List of symptoms ordered and with occurrences
-		Map<String,Long> symptomcountorder = new TreeMap<String,Long>();
-		// Create a permanent map to add our map ordered and counted
-		symptomcountorder.putAll(readytoprint.ListCountOrder());
-		System.out.println(symptomcountorder);
-		
+		/**
+		 * List of symptoms ordered and with occurrences
+		 */
+
+		symptomcountorder.putAll(readytoprint.listCountOrder());
 
 		ResultsWriter results = new ResultsWriter(symptomcountorder);
-		results.writeToFile();
+		results.writetofile();
+		
+		System.out.println("The results of the data extraction is located in the result.out file");
 
 	}
 }
