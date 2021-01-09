@@ -23,6 +23,9 @@ public class ResultsWriter implements Writer {
 
 	@Override
 	public void writetofile() throws IOException {
+		/**
+		 * {@inheritDoc}
+		 */
 
 		TreeMap<String, Long> map = new TreeMap<String, Long>();
 		map.putAll(filepath);
@@ -41,8 +44,9 @@ public class ResultsWriter implements Writer {
 			}
 			bf.close();
 		} finally {
-			if (bf != null)
+			if (bf != null) {
 				bf.close();
+			}
 		}
 
 	}

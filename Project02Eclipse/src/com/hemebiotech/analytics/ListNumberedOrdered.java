@@ -25,6 +25,9 @@ public class ListNumberedOrdered implements CountOrder {
 
 	@Override
 	public Map<String, Long> listCountOrder() {
+		/**
+		 * {@inheritDoc}
+		 */
 		return filepath.stream().collect(Collectors.groupingBy(e -> e, TreeMap::new, Collectors.counting()));
 
 	}

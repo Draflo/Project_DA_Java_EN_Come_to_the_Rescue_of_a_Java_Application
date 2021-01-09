@@ -6,7 +6,7 @@ import java.util.Map;
  * Gets a list of string from anything, count the number of occurrences and then
  * orders it alphabetically in a map
  * 
- * @author Draflosword
+ * @author Draflo
  *
  */
 public interface CountOrder {
